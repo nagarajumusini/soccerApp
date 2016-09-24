@@ -1,0 +1,173 @@
+  <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Soccer app</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="#/">Home</a>
+                    </li>
+                    <li ng-show="global.status">
+                        <a href="#/dashboard">Admin Panel</a>
+                    </li>
+
+					<li ng-hide="global.status">
+                        <a href="#/login">Login</a>
+                    </li>
+                     <li ng-show="global.status">
+                        <a href="" ng-click="logout()">logout</a>
+                    </li>
+             </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    English Premier League Table - 2016-17
+                </h1>
+            </div>
+			<div class="col-md-12">
+				<table class="table table-sm">
+				  <thead>
+					<tr>
+					  <th>BARCLAYS PREMIER LEAGUE 2016-2017</th>
+					  <th>GP</th>
+					  <th>W</th>
+					  <th>D</th>
+					  <th>L</th>
+					  <th>F</th>
+					  <th>A</th>
+					  <th>GD</th>
+					  <th>P</th>
+					</tr>
+				  </thead>
+				  <tbody>
+               
+					<tr ng-repeat="item in scores">
+					  <th scope="row">{{$index + 1}} <a href="#">{{item.teamname}}</a></th>
+					 <td>{{item.played}}</td>
+					  <td>{{item.won}}</td>
+					  <td>{{item.draw}}</td>
+					  <td>{{item.loss}}</td>
+					  <td>{{item.goals}}</td>
+					  <td>{{item.xgoals}}</td>
+					  <td>{{item.goaldiff}}</td>
+					  <td>{{item.points}}</td>
+					</tr>
+				
+				  </tbody>
+				</table>
+            </div>
+
+        </div>
+        <!-- /.row -->
+		
+		      <!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Matches
+                </h1>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-check"></i> Results</h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                <th>Date</th>
+                                <th>Team 1</th>
+                                <th>vs</th>
+                                <th>Team 2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in oldmatches">
+                                    <td>{{item.date | date : format : timezone}}</td>
+                                    <td>{{item.lname}}</td>
+                                    <td>-</td>
+                                    <td>{{item.rname}}</td>      
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-gift"></i> Upcoming matches</h4>
+                    </div>
+                    <div class="panel-body">
+                                            <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                <th>Date</th>
+                                <th>Team 1</th>
+                                <th>vs</th>
+                                <th>Team 2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 <tr ng-repeat="item in upcomingmatches">
+                                    <td>{{item.date | date : format : timezone}}</td>
+                                    <td>{{item.lname}}</td>
+                                    <td>-</td>
+                                    <td>{{item.rname}}</td>      
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-gift"></i> Today's matches</h4>
+                    </div>
+                    <div class="panel-body">
+                                            <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                <th>Date</th>
+                                <th>Team 1</th>
+                                <th>vs</th>
+                                <th>Team 2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 <tr ng-repeat="item in todaymatches">
+                                    <td>{{item.date | date : format : timezone}}</td>
+                                    <td>{{item.lname}}</td>
+                                    <td>-</td>
+                                    <td>{{item.rname}}</td>      
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>

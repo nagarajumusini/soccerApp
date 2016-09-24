@@ -1,0 +1,112 @@
+   <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Soccer app</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#/">Home</a>
+                    </li>
+                    <li ng-show="global.status" class="active">
+                        <a href="#/dashboard">Admin Panel</a>
+                    </li>
+
+					<li ng-hide="global.status">
+                        <a href="#/login">Login</a>
+                    </li>
+                    <li ng-show="global.status">
+                        <a href="" ng-click="logout()">logout</a>
+                    </li>
+             </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+  <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Admin Area
+            </h1>
+        </div>
+  </div>
+ <div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="fa fa-fw fa-check"></i> Add Team</h4>
+            </div>
+            <div class="panel-body">
+                <form class="form-signin">
+                    <label for="inputEmail" class="sr-only">Team Name</label>
+                    <input type="text" id="inputEmail" class="form-control" placeholder="Team Name" required="" autofocus="" ng-model="user.name">
+
+                    <br>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="addteam(user)">Add Team</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="fa fa-fw fa-check"></i> Create Match</h4>
+            </div>
+            <div class="panel-body">
+                <form class="form-signin">
+                    <h4>Team Name</h4>
+                    <select ng-model="match.lteam_id" required=""  class="form-control">
+                        <option ng-repeat="option in teams" value="{{option.id}}">{{option.name}}</option>
+                    </select>
+                <div class="checkbox">
+                        <label>
+                            Vs
+                        </label>
+                    </div>
+                    <h4>Team Name</h4>
+                    <select ng-model="match.rteam_id" required=""  class="form-control">
+                        <option ng-repeat="option in teams" value="{{option.id}}">{{option.name}}</option>
+                    </select><br/>
+                    <h4>Date</h4>
+                    <p><input type="text" ng-model="match.date" placeholder="YYYY-MM-DD"  class="form-control"></p>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="createMatch(match)">Add Team</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="fa fa-fw fa-check"></i> Enter Scores</h4>
+            </div>
+            <div class="panel-body">
+                <form class="form-signin">
+                    <h4>Select Match</h4>
+                    <select ng-model="score.match_id" required=""  class="form-control">
+                        <option ng-repeat="option in matches" value="{{option.id}}">{{option.lname}} vs {{option.rname}}</option>
+                    </select>
+                    <br/>
+                    <p> Team 1 goals <input type="number" ng-model="score.goals" required=""  class="form-control"/> </p>
+                    <p> Team 2 goals <input type="number" ng-model="score.xgoals" required=""  class="form-control"/> </p>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="addscore(score)">Add Team</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
