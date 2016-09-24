@@ -32,7 +32,7 @@ When you're done with installing Node, Install all dependencies.
 $ npm install 
 ```
 
-**Import sql file, you can find that in MYSQLDB folder and configure connection object in config/mysql.js file :**
+**Import sql file, you can find that in SQLDB folder and configure connection object in config/mysql.js file :**
 
 
 **Build/Run project:**
